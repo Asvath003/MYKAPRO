@@ -61,6 +61,10 @@ export default function Home() {
   const trend = useMemo(() => history.length ? history.map(h => Math.round(calculateImpacts(selected, h.resources, h.priorities, h.constraints)[0])) : [Math.round(baseline[0] * 0.72), Math.round(baseline[0] * 0.82), Math.round(baseline[0] * 0.9), Math.round(impacts[0] * 0.96), Math.round(impacts[0])], [history, selected, baseline, impacts]);
 
   const switchSector = (sector: Sector) => {
+    if (sector.id === 'health') {
+      window.location.href = '/healthcare';
+      return;
+    }
     setSelected(sector); setResources(sector.resources.map(r => r.value)); setPriorities(sector.priorities.map(p => p.value)); setConstraints(sector.constraints.map(c => c.value));
     setHistory([]); setAiText(''); setAiError(''); setScenarioMode('Balanced'); setView('dashboard');
   };

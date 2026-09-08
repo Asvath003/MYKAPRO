@@ -65,6 +65,10 @@ export default function Home() {
       window.location.href = '/healthcare';
       return;
     }
+    if (sector.id === 'agri') {
+      window.location.href = '/agriculture';
+      return;
+    }
     setSelected(sector); setResources(sector.resources.map(r => r.value)); setPriorities(sector.priorities.map(p => p.value)); setConstraints(sector.constraints.map(c => c.value));
     setHistory([]); setAiText(''); setAiError(''); setScenarioMode('Balanced'); setView('dashboard');
   };
